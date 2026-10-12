@@ -1,0 +1,13 @@
+{
+  "purpose": "Finite prescribed spatial bond paths after repairing reflection asymmetry; this is a physics-only feasibility calculation, not a training-method comparison.",
+  "base_settings": "inputs/stateful_pilot.json",
+  "basis_settings": "inputs/spatial_transfer.json",
+  "mesh_path": "data/processed/stateful_pilot/symmetric_mesh.npz",
+  "lateral_guide_stiffness_n_per_m": 1000000000000.0,
+  "support_definition": "Quarter-plan mesh with fitted trestle strips, reflected complete tetrahedra. Vertical bolt and unilateral trestle/cone constraints are retained. Off-axis point pins are replaced by area-mean x/y translation and mean in-plane rotation springs on the substrate and cone bottom faces. These six modes define symmetric fixture/jack guidance; they are a new declared support idealization, not fitted experimental supports. Each mode is measured in metres (rotation times bottom-face RMS radius); its stiffness uses the existing support stiffness times a one-square-metre reference area.",
+  "representative_shapes": ["bond_mean", "bond_cos_1_0", "bond_sin_1_0", "bond_cos_0_1", "bond_sin_0_1", "bond_cos_2_0", "bond_cos_0_2", "bond_cos_1_1", "double_odd_1_1"],
+  "finite_multipliers": [-1.0, 1.0],
+  "case_reason": "Mean, both axial bay-scale phases, both half-bay cosines, a diagonal wave and the symmetry-selected double-odd combination span the specific support/scale questions. Shapes and signs are chosen before their finite responses; no layout-order reversal is used to choose a case. The double-odd coefficients have l1 norm one. Locally invisible directions may be added separately as algebraic witnesses, never as representative field frequencies.",
+  "training": {"seed": 368, "width": 64, "steps_per_cycle": 300},
+  "interpretation": "All case endpoints are queried in physics-only neural training. Outputs test the given discrete mechanics and observation chain, not interpolation generalization or experimental calibration. Full irreversible loading and unloading history is retained. Unchanged target regions, finite gauges and loaded bridge are used."
+}

@@ -1,0 +1,35 @@
+{
+  "dataset_doi": "10.5878/dvcn-bg03",
+  "target_interval_m": [-0.5, 0.5],
+  "central_diagnostic_interval_m": [-0.2, 0.2],
+  "baseline_duration_s": 10.0,
+  "depth_separation_m": 0.08,
+  "candidate_gauge_length_m": 0.02,
+  "candidate_gauges_per_depth": 16,
+  "candidate_shift_in_pitch": 0.25,
+  "coordinate_definition": "Distance along the third straight segment, centred on the midpoint of its two heat-pinching peaks; no rescaling of measured cable distance.",
+  "target_reason": "Fixed central 1 m interval corresponding to the 1 m bolt square; same interval for both specimens and all observation candidates.",
+  "regional_diagnostic_reason": "The central 0.4 m lies inside both the 0.66 m bag footprint and the 0.74 m cone diameter. Compare it with the flanks to check cancellation of opposite signed depth differences across the 1 m target, before choosing the engineering readout.",
+  "baseline_reason": "Fixed mean of the first 10 s of each DOFS record; an observed reference, not a virgin or unloaded state. BL100H DOFS belongs to a repeated loading day.",
+  "candidate_reason": "Two numerical observation layouts with identical count and 20 mm spatial support test whether the integrated response and candidate ordering depend on which physical locations are sampled. They are provisional observation operators, not validated piezoresistive installations.",
+  "specimens": {
+    "CL100H": {
+      "loading": "large cone",
+      "records": {
+        "1-bot": {"start_direction": "0-A", "heat_markers_m": [2.29, 3.8552, 4.1776, 5.7428, 6.0704, 7.6408, 7.9632, 9.5336, 9.8612, 11.4316]},
+        "1-top": {"start_direction": "0-A", "heat_markers_m": [2.02335, 3.58739, 3.90955, 5.47878, 5.80614, 7.37537, 7.69753, 9.27196, 9.59412, 11.1685]},
+        "2-bot": {"start_direction": "270-A", "heat_markers_m": [2.08051, 3.63935, 3.95631, 5.51515, 5.83731, 7.39096, 7.71312, 9.26676, 9.58892, 11.1374]},
+        "2-top": {"start_direction": "270-A", "heat_markers_m": [1.97139, 3.53543, 3.85759, 5.41643, 5.73339, 7.29223, 7.61439, 9.16803, 9.485, 11.0334]}
+      }
+    },
+    "BL100H": {
+      "loading": "large lifting bag",
+      "records": {
+        "1-bot": {"start_direction": "0-A", "heat_markers_m": [2.186, 3.7356, 4.058, 5.6128, 5.9352, 7.4952, 7.8176, 9.3724, 9.7, 11.26]},
+        "1-top": {"start_direction": "0-A", "heat_markers_m": [2.134, 3.6836, 4.006, 5.5556, 5.8832, 7.438, 7.7604, 9.3204, 9.6428, 11.2028]},
+        "2-bot": {"start_direction": "270-A", "heat_markers_m": [2.2328, 3.7928, 4.11, 5.6752, 5.9976, 7.5628, 7.8852, 9.4452, 9.7676, 11.3328]},
+        "2-top": {"start_direction": "270-A", "heat_markers_m": [2.1964, 3.7512, 4.0736, 5.6336, 5.9508, 7.5108, 7.8332, 9.4036, 9.7208, 11.2756]}
+      }
+    }
+  }
+}

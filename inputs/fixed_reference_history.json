@@ -1,0 +1,19 @@
+{
+  "material_configuration": "inputs/regional_material_response.json",
+  "domain": {
+    "top_young_pa": [20000000000.0, 30000000000.0],
+    "compression_stiffness_pa_per_m": [200000000000.0, 1000000000000.0]
+  },
+  "parameter_meaning": "Two time-independent material/contact scenarios span the previously examined endpoints. Closed-contact stiffness is a compliance scenario, not a monitored degradation parameter. Irreversible damage evolves within each complete seven-step force path, starting from its learned loaded reference state.",
+  "representation": "One common material-parameter network predicts seven states. The recorded path_coordinates selects either reference-increment or absolute-state optimization coordinates; both use the same fixed-reference physical observations. All four reflection sectors remain active for every material input. Actual force/rod/support arrays set physical step order. Material history is recomputed from absolute displacements at every optimization evaluation.",
+  "path_coordinates": "reference_increments",
+  "initialization": "The same saved 30-GPa, 200-GPa/m force path initializes every material query. Other material paths are not training labels. The complete force residual supplies training, including the reference step.",
+  "training_parameters": [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 0], [0, 1], [1, -1], [1, 0], [1, 1]],
+  "query_parameters": [[-0.5, -0.5], [-0.5, 0.5], [0.5, -0.5], [0.5, 0.5]],
+  "width": 4,
+  "seed": 1068,
+  "steps_per_segment": 12,
+  "lbfgs_history_size": 6,
+  "batch_size": 1,
+  "purpose": "Establish the complete force-driven shared PINN and assess its regional material responses and fixed-calibration readout before developing the coupled regional/history training method. Segment lengths expose response evolution and are not scientific acceptance thresholds."
+}

@@ -1,0 +1,17 @@
+{
+  "boundary_configuration": "inputs/boundary_history.json",
+  "boundary_arrays": "data/processed/boundary_history/uniform.npz",
+  "cases": [
+    {"name": "separate_closure", "top_young_pa": 30000000000.0, "compression_stiffness_pa_per_m": 1000000000000.0},
+    {"name": "softer_top", "top_young_pa": 20000000000.0, "compression_stiffness_pa_per_m": 200000000000.0},
+    {"name": "combined", "top_young_pa": 20000000000.0, "compression_stiffness_pa_per_m": 1000000000000.0}
+  ],
+  "parameter_basis": {
+    "compression": "Sjolander 2021 sections 2.1 and 3.1 distinguish closed-normal penalty stiffness from tensile and shear interface stiffness. Use the existing cone-wall contact value, 1e12 Pa/m, as a declared contact-compliance scenario. This is not a measured CL100H interface stiffness or a fitted LVDT value.",
+    "bulk": "Sjolander 2021 section 3.1 uses 20 GPa for shotcrete in a different block-loaded study. The 20-versus-30-GPa top-layer change tests an independently acting material mechanism; it is not a modulus inferred from CL100H cubes, raw piston strokes or DOFS. Retain the existing 35-GPa substrate and cone.",
+    "history": "Retain the original mixed opening/slip bilinear tensile damage law and its given parameters. Only the undegraded closed-normal stiffness is separated here. Sjolander's pure Mode-I exponential damage law is not being claimed as this implementation.",
+    "materials": "Jansson 2024 section 4.5 and the saved raw tests provide cube strength, wedge-splitting force/CMOD and core force, but do not independently identify CL100H bulk moduli or closed-interface stiffness. Jansson 2025 Table 2 reports substrate/FRC failures in the nonglue hydro-demolished cores; it does not identify a unique CL100H interface strength. Its corrigendum text remains unavailable."
+  },
+  "question": "Do closed-interface compliance and top-layer bulk compliance have distinct effects on the local cone motion and fixed two-depth regional response? Reuse the complete force boundary and reference rather than adjusting observation transfer to fit the same measurements.",
+  "continuation": "B2/engineering_alignment/fixed_reference_material_history_pinn"
+}

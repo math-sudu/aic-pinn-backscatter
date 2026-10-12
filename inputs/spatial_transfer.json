@@ -1,0 +1,16 @@
+{
+  "purpose": "Local target-information check for prescribed spatial bond-strength directions at independently trained nominal neural paths.",
+  "source": "Sjoelander, Ansell and Malm (2021), DOI 10.1016/j.engfailanal.2021.105612, sections 2.3 and 3.2, equations (7)-(9). Local original: references/papers/sjolander2021_spatial/source.pdf.",
+  "spatial_period_m": 1.0,
+  "maximum_frequency_index": 2,
+  "bond_relative_scale": 0.2,
+  "amplitude_relative_scale": 0.2,
+  "nominal_amplitude": 1.0,
+  "field_definition": "s(x,y)=1+0.2*(eta_mean+sum eta_cos*cos(2*pi*(m*x+n*y)/L)+eta_sin*sin(2*pi*(m*x+n*y)/L)). Keep one vector from each +/- wave-vector pair, max(|m|,|n|)<=2. Strength=t0*s; fracture_energy=G0*s; stiffness=K0. The local directions are evaluated at eta=0. A finite admissible neighborhood is sum(abs(eta_bond))<=1, ensuring 0.8<=s<=1.2.",
+  "spatial_reason": "One metre is the verified bolt-bay width and fixed target span. The complete low-order cosine/sine family represents mean, left/right, orthogonal and diagonal bond variation; retaining indices through 2 follows the slow spatial family used in the source. Phases are explicit independent directions, not random draws or inferred defects. The subset through index 1 reports the effect of excluding the half-bay scale. Neither subset is selected by layout ranking.",
+  "scale_reason": "Twenty percent is a declared local scenario scale, not an estimated field variance. It expresses the response to a 0.2 MPa strength change about this pilot's 1 MPa input and preserves positive strength over the stated neighborhood. Multiplying nonzero direction scales cannot change the exact kernel-inclusion test.",
+  "mechanical_boundary": "All cohesive facets, including the cone-top and substrate-top interfaces, share this known field. It is held fixed through the loading/unloading history. Compression, bulk properties, supports and geometry stay those of the existing prescribed pilot. Observed asymmetry motivates spatial coverage but is not attributed uniquely to bond strength.",
+  "observation_boundary": "Existing 30 mm uniform gauges, positions, fixed regional targets and loaded resistor strings. Raw gauge values are an intermediate diagnostic; the current circuit observes only one mean per string. ADC, RF and installation transfer are not modeled here.",
+  "references": ["reference_a", "reference_b"],
+  "interpretation": "Differentiate the full discrete physical path at the existing neural predictions. The implicit path derivative is a local physics/observation diagnostic, not an independently solved primal trajectory, learned spatial PINN sensitivity, finite excursion, or comparison with a traditional solver. Stack time steps only for the separately declared case where the same bond field is observed throughout this complete known history."
+}

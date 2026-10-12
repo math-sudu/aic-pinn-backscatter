@@ -1,0 +1,42 @@
+{
+  "dataset_doi": "10.5878/dvcn-bg03",
+  "material_archive": "MaterialData",
+  "cl100h_alignment": {
+    "load_file": "data/raw/jansson2024/CL100H/LoadDisplacement/CL100H.dat",
+    "displacement_channels": ["LVDT1", "LVDT2", "LVDT3"],
+    "dofs_files": ["CL100H-d1-regional.npz", "CL100H-d2-regional.npz"],
+    "events": [
+      {"role": "offset_estimation", "load_window_s": [1065, 1080], "dofs_window_s": [1108, 1112]},
+      {"role": "independent_event_check", "load_window_s": [1120, 1136], "dofs_window_s": [1163, 1166]}
+    ],
+    "selection_reason": "Two abrupt increases of the mean cone-to-substrate LVDT displacement, accompanied by force drops, correspond to short DOFS loss-of-correlation episodes and persistent regional response changes. Use the first event to estimate a constant offset and the second to check it; do not fit a strain-load constitutive curve to synchronize records.",
+    "time_map": "t_DOFS_shared = t_DAT + offset_s. Convert each regional pair-local time to the earliest of the four CL100H DOFS start timestamps before estimating or applying the offset. B2_observation_results.json records those timestamps.",
+    "interval_meaning": "DOFS event is bracketed by complete regional records immediately before and after the first missing-data run in the stated window. This is a sampling/event correspondence bracket, not a statistical confidence interval or a synchronized acquisition guarantee.",
+    "known_load_reference_window_s": [0.140625, 10.140625],
+    "same_force_probe_kn": 300.0,
+    "same_force_probe_reason": "An intermediate force crossed on both sides of the global peak tests whether instantaneous force alone defines a unique regional response. The branch is selected from the loading record, not from the size of a strain discrepancy."
+  },
+  "engineering_alignment": {
+    "force_probe_levels_kn": [100, 200, 300, 400],
+    "selection_reason": "Hundred-kN crossings span the measured loading branch and available post-peak branch. Keep missing regional observations and absent crossings; preserve the full acquired path for subsequent model work. The pre-existing 300-kN paired probe is the same-force history comparison. These are mechanical stages, not elastic or damage labels."
+  },
+  "physical_geometry": {
+    "source": "references/papers/jansson2024_dataset/full.md sections 4.1-4.3; source.pdf Figure 3. The cone bottom radius is from jansson2025_lining section 2.1 and must be revisited if the outstanding corrigendum changes that geometry.",
+    "outer_shape": "symmetric octagon; a regular-octagon geometry is a modeling idealization",
+    "across_flats_m": 1.8,
+    "substrate_thickness_m": 0.3,
+    "top_layer_thickness_m": 0.1,
+    "cone_top_radius_m": 0.37,
+    "cone_bottom_radius_m": 0.31,
+    "bag_side_m": 0.66,
+    "bolt_square_side_m": 1.0,
+    "bolt_hole_diameter_m": 0.05,
+    "dofs_depths_from_interface_m": [0.01, 0.09],
+    "support_note": "Four rod/plate restraints and two trestles act on the coupled substrate/top-layer system. Their finite support areas and compliance remain to be represented; the whole 1 m square perimeter is not a clamped boundary."
+  },
+  "material_use": {
+    "cubes": "Compression force divided by each recorded loaded area gives cube compressive strength. Machine piston stroke is not a local extensometer and does not directly provide Young modulus.",
+    "tensile_cores": "Retain measured force and machine displacement. Core area and per-core failure location are not present in these files; do not turn peak force into an interface traction-separation law.",
+    "wedge_splitting": "Retain both Split_force and Ch 1 Force with their original signs and CMOD. Specimen ligament geometry and the calibration of Split_force must be verified before identifying tensile softening or fracture energy."
+  }
+}

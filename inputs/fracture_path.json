@@ -1,0 +1,32 @@
+{
+  "material_directory": "data/raw/jansson2024/MaterialData/WedgeSplitTest",
+  "cmod_probes_mm": [0.5, 1.0, 2.0, 4.0],
+  "channel_fit_peak_fraction": 0.1,
+  "published_tension_scenario": {
+    "name": "lofgren2005_wst150_mean",
+    "tensile_strength_pa": 1980000.0,
+    "a1_per_m": 11800.0,
+    "a2_per_m": 80.0,
+    "b2": 0.47,
+    "source": "references/papers/lofgren2005_wst/source.pdf, page 14, Figure 12 and Table 4, WST 150 Average row",
+    "role": "Conditional FRC tensile law for constitutive development, not a fit of Jansson material. The source mix uses 40 kg/m3 of 35 mm fibres; Jansson uses 53 kg/m3 HE 55/35 GL. The constitutive shape and this numerical scenario have distinct evidential roles."
+  },
+  "coupon_demonstration": {
+    "young_pa": 20000000000.0,
+    "band_lengths_m": [0.02, 0.05, 0.1],
+    "area_m2": 0.01,
+    "role": "Uniaxial material-point and apparatus-control verification only. These dimensions do not describe a Jansson WST specimen or identify its fracture energy."
+  },
+  "source_basis": [
+    "references/papers/jansson2024_dataset/full.md, sections 3 and 4.5",
+    "references/papers/lofgren2005_wst/source.pdf, sections 2, 3.2 and 6.1",
+    "https://doi.org/10.1016/0013-7944(90)90189-N, sections 2 and 4; original full text read online"
+  ],
+  "unresolved_test_geometry": [
+    "Jansson wedge-test cube width, height and thickness",
+    "Starter notch, guide notches, remaining ligament and loading-line coordinates",
+    "CMOD attachment coordinates",
+    "Wedge half-angle and the physical/calculated identity of the two force channels"
+  ],
+  "continuation": "B2/engineering_alignment/spatial_fracture_and_control_coupling"
+}

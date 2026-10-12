@@ -1,0 +1,15 @@
+{
+  "history_file": "data/processed/jansson2024/CL100H-engineering-history.npz",
+  "initial_model_report": "results/ideation/B2_initial_state_model.json",
+  "initial_model_configuration": "inputs/initial_state_model.json",
+  "rod_fit_force_window_kn": [5.0, 15.0],
+  "rod_fit_reason": "Fit the incremental total-rod slope during early support release. The four individual rods and later release remain checks; absolute ring readings are not assembly tensions.",
+  "conditional_rod_stiffness_n_per_m": [50000000.0, 100000000.0],
+  "conditional_stiffness_reason": "The existing effective-rod scenario and a doubled value test whether force/displacement channels distinguish rod flexibility from the external displacement transfer. These are conditional scenarios, not measured bounds or identified rod stiffnesses.",
+  "force_samples_kn": [5.0, 15.0, 25.0, 50.0, 75.0, 100.0],
+  "external_displacement_fit_force_window_kn": [50.0, 75.0],
+  "external_displacement_check_force_window_kn": [75.0, 100.0],
+  "external_displacement_reason": "After support release, fit only an affine difference between the machine channel and computed jack-face motion, then check the next force interval. Keep the fixed first reference: a fitted offset represents accumulated seating/transfer mismatch, not a new zero. This observed difference cannot by itself identify hydraulic/frame compliance.",
+  "local_observation_check": "Compare the three-channel mean and permutation-invariant first angular harmonic amplitude. Do not assign instrument numbers to the virtual probe coordinates. The equal-angle harmonic does not identify cone rotation without installation geometry.",
+  "continuation": "B2/engineering_alignment/local_boundary_correspondence"
+}

@@ -1,0 +1,10 @@
+{
+  "purpose": "Test whether a realizable change of fixed electrical weights provides a consequential design objective before adding PINN training.",
+  "physical_action": "Permanently shunt each of the existing centred gauges with a nonnegative resistor, rematch the three completion arms, and calibrate each layer bridge once at zero uniform strain. An open shunt leaves a gauge unchanged; a zero shunt is a bypass connection.",
+  "shared_patterns": "Same pattern at both depths, mirrored left/right regions, even central region; x and y patterns may differ because supports need not have rotation symmetry.",
+  "settings_source": "inputs/regional_readout.json",
+  "mechanical_sources": ["finite_p2_local030", "finite_p2_local020"],
+  "design_objective": "Mean squared absolute output-minus-target plus mean squared finite changes of that mismatch from the same nominal history. Both terms use equivalent microstrain and all five nonzero path steps and twelve components. Equal term weights retain B0's response and change objectives at the declared 20% finite field scale; no probability model is assigned.",
+  "selection": "Fit positive linear weights on one mesh and evaluate the exact circuit at fixed values on both meshes. Leave out both signs of one spatial shape together to test field dependence, and repeat from the opposite mesh to test spatial representation dependence.",
+  "interpretation": "Passive weighting is a design family, not a new PINN contribution. This calculation reuses saved physics-only neural paths. It does not assess a trained spatial surrogate or installed ADC/RF performance. The linear optimization and its exact loaded-circuit discrepancy are both retained."
+}

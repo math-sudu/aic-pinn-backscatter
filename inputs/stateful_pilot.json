@@ -1,0 +1,60 @@
+{
+  "purpose": "Three-dimensional, prescribed-parameter interface-history pilot for the PINN path residual and sensing operators. These are not fitted CL100H material or support parameters.",
+  "geometry": {
+    "across_flats_m": 1.8,
+    "top_levels_m": [0.0, 0.05, 0.1],
+    "bottom_levels_m": [0.0, -0.1, -0.2, -0.3],
+    "cone_top_radius_m": 0.37,
+    "cone_bottom_radius_m": 0.31,
+    "bolt_centres_m": [[-0.5,-0.5], [-0.5,0.5], [0.5,-0.5], [0.5,0.5]],
+    "bolt_patch_radius_m": 0.08,
+    "trestle_x_m": [-0.7,0.7],
+    "trestle_width_m": 0.12,
+    "trestle_stiffness_pa_per_m": 1000000000000.0,
+    "cone_contact_stiffness_pa_per_m": 1000000000000.0,
+    "mesh_size_m": 0.15,
+    "source": "Jansson Data in Brief 2024 sections 4.1/4.3 and Figure 3; jansson_mechanics.json. Regular octagon, rigid vertical bolt patches, trestle locations/width/stiffness and jack-face displacement are declared idealizations. Trestles exert compression only; cone sides have frictionless unilateral contact. Rod holes are filled in this pilot. Self-weight and bolt prestress are absent in this initially seated, stress-free scenario."
+  },
+  "bulk": {
+    "top_young_pa": 30000000000.0,
+    "substrate_young_pa": 35000000000.0,
+    "poisson": 0.2,
+    "interpretation": "Given elastic solids isolate interface-history and neural training implementation. No post-cracking concrete or full experimental-path claim. These moduli are scenario inputs, not derived from cube strength or piston displacement."
+  },
+  "interface": {
+    "stiffness_pa_per_m": 200000000000.0,
+    "strength_pa": 1000000.0,
+    "fracture_energy_j_per_m2": 250.0,
+    "interpretation": "Isotropic effective-separation bilinear cohesive law: equal normal/shear stiffness, strength and fracture energy, with undegraded normal compression and irreversible maximum opening/slip. Given parameters, not a calibrated concrete bond law; no friction after complete decohesion."
+  },
+  "loading": {
+    "displacement_scale_m": 0.0003,
+    "path": [0.0,0.25,0.5,1.0,0.5,0.25],
+    "training_amplitudes": [0.8,1.0,1.2],
+    "evaluation_amplitudes": [0.9,1.1],
+    "amplitude_derivative_scale": 0.2,
+    "amplitude_change_half_step": 0.05,
+    "derivative_scale_reason": "Half-width of the declared amplitude domain: differentiate with respect to normalized amplitude (alpha-1)/0.2, rather than an arbitrary unit-sized perturbation.",
+    "finite_change_reason": "Known amplitude pairs alpha +/- 0.05 represent a ten-percentage-point change of the peak prescribed displacement. Around nominal centres 0.8, 1.0, 1.2 the additional physics queries cover 0.75 to 1.25; evaluation amplitudes 0.9 and 1.1 are not queried in training. These are finite changes with full history, not numerical approximations claimed to converge to a smooth global tangent.",
+    "interpretation": "Prescribed upward displacement on the cone bottom, free lateral motion. The repeated 0.5 and 0.25 steps test history at identical present displacement. This path is not the CL100H measured load record."
+  },
+  "observations": {
+    "depths_m": [0.01,0.09],
+    "regions_m": [[-0.5,-0.2],[-0.2,0.2],[0.2,0.5]],
+    "directions": [0,1],
+    "candidates": [
+      {"name":"uniform_30mm_centred","length_m":0.03,"shift_m":0.0},
+      {"name":"uniform_30mm_shifted","length_m":0.03,"shift_m":0.01}
+    ],
+    "interpretation": "Host and gauge line integrals use the selected element representation, with exact subsegment integration for both P1 and P2. Candidate gauge means use independent uniform finite-length operators. Neither candidate is a calibrated V9 or KM transfer law."
+  },
+  "training": {
+    "seed": 68,
+    "hidden_width": 48,
+    "adam_steps": 400,
+    "adam_learning_rate": 0.001,
+    "lbfgs_steps": 1200,
+    "dtype": "float64",
+    "interpretation": "Initial optimizer settings for a reviewable implementation run, not a scientific precision criterion or a cap on later work."
+  }
+}

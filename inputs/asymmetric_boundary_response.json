@@ -1,0 +1,14 @@
+{
+  "support_report": "results/ideation/B2_support_calibration.json",
+  "boundary_report": "results/ideation/B2_local_boundary_correspondence.json",
+  "history_file": "data/processed/jansson2024/CL100H-engineering-history.npz",
+  "conditional_rod_stiffness_n_per_m": 50000000.0,
+  "channels_at_model_corners": [1, 4, 2, 3],
+  "mapping_reason": "Use the positive-x, positive-y member of the four reflection-related static-admissibility mappings as a conditional coordinate convention, not an instrument registration or a fit to optical outputs.",
+  "eccentricity_rule": "Arithmetic mean of the vertices of this mapping's common seven-stage admissible polygon. The pressure distribution is positive exponential tilt over the unchanged discrete jack footprint, normalized to unit resultant and the selected first moment. This specifies a conditional load, not the actual jack contact pressure.",
+  "anchor_fit_force_levels_kn": [25.0, 50.0],
+  "anchor_fit_reason": "Fit one diagonal stiffness contrast k_i = k_0 exp(eta sign(x_i y_i)) to the measured change of the self-balanced four-rod contrast between 25 and 50 kN. Keep geometric-mean stiffness, gravity seating, zero specified assembly tension and the previous trestle compliance. Other rod components, 75/100-kN responses, local motion and regional host outputs are checks.",
+  "force_levels_kn": [5.0, 15.0, 25.0, 50.0, 75.0, 100.0],
+  "azimuth_step_deg": 1.0,
+  "continuation": "B2/engineering_alignment/boundary_history_and_observation_transfer"
+}

@@ -1,0 +1,10 @@
+{
+  "source_network": "regional_history",
+  "additional_rising_force_kn": [150.0, 200.0, 250.0, 300.0, 350.0, 400.0, 425.0, 450.0],
+  "terminal_falling_force_kn": 300.0,
+  "event_knots": "Keep the raw global peak, both endpoints of both measured displacement jumps, and the intervening minimum and maximum load. Retain chronological order and missing optical support.",
+  "prefix": "Preserve the existing seven force/rod/support states exactly, including their engineering-history sampling. New states use the native mechanical DAT cadence and the same fixed measurement reference.",
+  "initialization": "Extend each material-query prediction by the last 75-to-100-kN displacement secant. The new output rows are independent trainable states, not a load-only representation. No measured displacement or optical response is used as a neural label.",
+  "control": "This artifact extends conditional measured-traction replay. Experimental machine displacement remains a separate observable. It is not imposed together with measured forces and is not identified with cone motion. A displacement-control continuation requires an explicit apparatus/observation relation and an unknown load.",
+  "continuation": "B2/engineering_alignment/bulk_fracture_and_path_control"
+}

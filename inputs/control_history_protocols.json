@@ -1,0 +1,6 @@
+{
+  "controls_mm": [[0.6, 0.8, 0.6], [0.6, 0.7, 0.6]],
+  "history_pairs": [[0, 2]],
+  "protocol_pairs": [[1, 0]],
+  "role": "Two training protocols sharing the original 30-state physical prefix and one causal spatial head. The protocol contrast is the change from a 0.7 to a 0.8 mm reversal in the return-minus-first response at 0.6 mm. Saved unloading fields are evaluation data only."
+}

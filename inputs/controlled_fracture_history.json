@@ -1,0 +1,17 @@
+{
+  "source_network": "results/ideation/stateful_pilot/fixed_reference_history/loading_history_initial.json",
+  "fracture_configuration": "inputs/fracture_path.json",
+  "nonlocal_radius_m": 0.04,
+  "softening_length_m": 0.05,
+  "length_role": "Conditional nonlocal FRC scenario. The 40 mm interaction radius spans several 8 mm maximum aggregate sizes and is comparable to the reported 35 mm fibre length; neither fact identifies the radius. The separate 50 mm softening conversion length retains a previous material-point scenario. Both remain material/model parameters requiring response evidence. No quadrature-cell or element length is substituted, and the local law integral is not a claim about the global nonlocal fracture energy.",
+  "apparatus": {
+    "compliance_m_per_n": 1.6559298520896146e-8,
+    "source": "results/ideation/B2_support_calibration.json, 50 MN/m rod case, external_displacement_slope_mm_per_kn",
+    "role": "Conditional linear series compliance using the previously fitted low-load machine-minus-jack slope. That fit did not identify frame/hydraulic compliance. The earlier affine seating offset is not applied as a discontinuity at the fixed reference. The recorded actuator increments are imposed and jack force is predicted; local LVDT and measured rod/support forces are observations.",
+    "frame": "Fixed external frame for the rod springs, trestles and actuator; jack motion is the work-conjugate weighted patch displacement relative to this frame. Lateral guides retain the existing in-plane rigid restraint."
+  },
+  "load_scale_n": 100000.0,
+  "control_scale_m": 0.001,
+  "parameter_role": "Keep the existing two material inputs (top modulus and interface compression stiffness), 25 training conditions and four held queries. Fracture and apparatus values above define the current conditional scenario.",
+  "continuation": "B2/engineering_alignment/controlled_fracture_training"
+}

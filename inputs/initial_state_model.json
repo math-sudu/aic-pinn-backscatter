@@ -1,0 +1,30 @@
+{
+  "base_settings": "inputs/stateful_pilot.json",
+  "purpose": "Initial equilibrium and mechanical observation model for CL100H alignment. Bulk and cohesive parameters remain starting values; this is not a fitted experimental path.",
+  "geometry": {
+    "mesh_size_m": 0.15,
+    "bolt_patch_radius_m": 0.075,
+    "trestle_x_m": [-0.5, 0.5],
+    "jack_patch_radius_m": 0.08,
+    "lateral_guide_stiffness_n_per_m": 1000000000000.0,
+    "source": "Jansson 2024 Figure 3 shows the 1 m rod square, a 150 mm top bearing footprint and trestles approximately under the rod lines. Trestle centres at +/-0.5 m interpret the schematic; their 0.12 m width and penalty stiffness retain the declared pilot idealization. The 0.08 m jack contact radius is an unmeasured model input. Rod holes remain filled. Revisit these inputs during calibration, not as measured dimensions."
+  },
+  "weight": {
+    "gravity_m_per_s2": 9.81,
+    "top_cube_prefix": "cast3",
+    "substrate_cube_prefixes": ["cast1", "cast2"],
+    "source": "Raw MaterialData cube .TRA headers: Bulk density, specimen mass and dimensions. Use the mean of both substrate cast groups because the CL100H slab-to-cast assignment is not specified; retain the cast range in the result. This estimates the concrete specimen weight, excluding fixtures."
+  },
+  "anchors": {
+    "stiffness_n_per_m": [50000000.0, 50000000.0, 50000000.0, 50000000.0],
+    "assembly_tension_n": [0.0, 0.0, 0.0, 0.0],
+    "model": "Each ring-bearing patch transmits a uniform vertical load conjugate to its area-mean displacement. A tension-only effective rod spring acts on that mean; patch rotation is not clamped. The assembly is first equilibrated under gravity and the declared assembly tensions, then spring rest lengths are set to that equilibrium. Effective stiffness, seating and assembly tension require calibration.",
+    "source_conflict": "Jansson 2024 Figure 7 labels the rod and nut M20; Jansson 2025 section 2.2 says phi 25 mm and assumes zero pretension after hand tightening. The starting spring stiffness is not calculated from either diameter. Raw ring-cell initial readings do not establish absolute assembly tension."
+  },
+  "local_observations": {
+    "angles_deg": [0.0, 120.0, 240.0],
+    "definition": "Vertical cone-minus-substrate displacement at three coincident one-sided points on the polygonal cone bottom edge. This local-jump idealization cancels common rigid translation and rotation, and retains cone tilt. The papers establish 120-degree spacing but not the absolute azimuth, attachment footprints or channel-to-position registration. These outputs are virtual probes, not an asserted exact LVDT1/2/3 map."
+  },
+  "diagnostic_force_n": [10000.0, 25000.0],
+  "diagnostic_reason": "Loads spanning the measured concrete self-weight check support release and anchor engagement after initialization. This short intact calculation verifies the boundary construction; subsequent experimental-path calibration uses the full nonlinear history and measured channels. Applied resultant is the only controlled mechanical quantity."
+}

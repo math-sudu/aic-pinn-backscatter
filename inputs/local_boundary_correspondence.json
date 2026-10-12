@@ -1,0 +1,12 @@
+{
+  "support_report": "results/ideation/B2_support_calibration.json",
+  "history_file": "data/processed/jansson2024/CL100H-engineering-history.npz",
+  "force_levels_kn": [25.0, 50.0, 75.0, 100.0, 200.0, 300.0, 400.0],
+  "regional_levels_kn": [100.0, 200.0, 300.0, 400.0],
+  "rod_slope_windows_kn": [[5.0, 15.0], [25.0, 50.0], [50.0, 100.0], [100.0, 200.0], [200.0, 300.0], [300.0, 400.0]],
+  "azimuth_step_deg": 1.0,
+  "moment_assumption": "Use the saved 50 MN/m conditional model's concrete weight and equal rod forces at the fixed known-load reference. The absolute ring-cell zero, actual rod mapping, preload and fixture weight are not identified. Enumerate all 24 channel-to-corner permutations rather than fitting or asserting a map.",
+  "moment_question": "Can a centred jack resultant and nonnegative reactions anywhere on the declared trestle footprint balance the measured four rod increments? Can one fixed eccentric resultant within the declared jack footprint meet the same necessary balance conditions across loading stages? This is static admissibility, not a constitutive solution or an identified installation.",
+  "azimuth_question": "Can the unknown azimuth of an otherwise unchanged set of three coincident cone-edge/substrate probes explain the measured local mean and spread? Reuse both saved support scenarios without refitting material, displacement zeros or measured channels.",
+  "continuation": "B2/engineering_alignment/asymmetric_boundary_response"
+}

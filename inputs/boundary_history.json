@@ -1,0 +1,14 @@
+{
+  "asymmetric_configuration": "inputs/asymmetric_boundary_response.json",
+  "asymmetric_report": "results/ideation/B2_asymmetric_boundary_response.json",
+  "reference_case": "eccentric_equal_anchors",
+  "force_levels_kn": [5.0, 15.0, 25.0, 50.0, 75.0, 100.0],
+  "rod_slope_windows_kn": [[5, 15], [15, 25], [25, 50], [50, 75], [75, 100], [100, 200], [200, 300], [300, 400]],
+  "boundary_meaning": "Replay the measured four-rod force increments with the previous equal-anchor reference forces and fixed eccentricity. Infer the support resultant and first moment by equilibrium. Two nonnegative support-pressure families test its unmeasured spatial distribution. This is a conditional forward traction calculation, not identification of anchor stiffness, support seating or an experimental displacement field.",
+  "support_pressure_priors": ["uniform", "reference_contact"],
+  "pressure_meaning": "Exponentially tilt either area weights or the saved reference contact-pressure weights to the required centroid. Retain the same trestle footprint. The two distributions are declared conditional cases, not measured pressure bounds.",
+  "lvdt_arm_length_m": 0.05,
+  "lvdt_arm_meaning": "A 50 mm outward radial substrate attachment with a rigid arm returning to the cone edge tests finite-span observation sensitivity. Include the substrate attachment's infinitesimal rotation so common rigid motion cancels. The arm length and angle are not registered instrument geometry and are not fitted to the LVDTs.",
+  "azimuth_step_deg": 1.0,
+  "continuation": "B2/engineering_alignment/regional_material_and_history_representation"
+}

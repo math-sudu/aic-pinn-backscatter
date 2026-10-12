@@ -1,0 +1,21 @@
+{
+  "purpose": "Resolve the fixed regional targets and actual finite gauges before drawing layout or training-method conclusions.",
+  "base_settings": "inputs/stateful_pilot.json",
+  "support_settings": "inputs/spatial_finite_paths.json",
+  "order": 2,
+  "uniform_mesh_sizes_m": [0.15, 0.10, 0.075],
+  "local_background_size_m": 0.10,
+  "local_sizes_m": [0.03, 0.02],
+  "transition_m": 0.075,
+  "local_rule": "Use the smaller distance to the two fixed central measurement segments and the cone-top perimeter. Grow from the local size to the background size over the declared transition. The quarter mesh is reflected as complete tetrahedra. The refinement is defined from geometry and observation support, not from favorable output or layout rank.",
+  "representation": "Straight-sided ten-node Lagrange tetrahedra; four-point exact bulk stiffness integration; six-point degree-four surface integration for cohesive and distributed contact terms. The original P1 vertices retain the same geometry. Mesh refinement also improves the polygonal cone boundary. Positive-penalty contact is evaluated at surface quadrature points, not through separate nodal gap conditions.",
+  "coordinates": "Reflection-even vector displacement coordinates only for the given symmetric nominal field and loading. Full-domain forces are retained and their omitted symmetry sectors are checked. No symmetry restriction is authorized by these settings for arbitrary spatial fields.",
+  "spatial_followup": {
+    "nominal_references": ["nominal_p2_local030", "nominal_p2_local020"],
+    "finite_shapes": ["bond_cos_1_0", "bond_sin_1_0", "bond_cos_2_0"],
+    "finite_multipliers": [-1.0, 1.0],
+    "reason": "Compare a bay-scale symmetric variation, an asymmetric variation, and the half-bay variation that enlarges the local information family. Keep both signs. These shapes precede their computed finite responses. The full local derivative still covers both axes and all original 25 bond directions plus loading.",
+    "coordinates": "All four vector-reflection sectors for local derivatives at the symmetric nominal path. Finite x-directed fields retain both x sectors and the y-even sector; they are trained with the full nonlinear residual and coupled history. Sparse intact-elastic factors supply invertible coordinates without storing a dense full-domain factor."
+  },
+  "interpretation": "These neural paths diagnose spatial representation under unchanged physical material, support and readout definitions. The P2 and integration changes are numerical construction, not a new PINN contribution. Individual gauge responses and physical experimental calibration remain distinct from the regional layout score."
+}
